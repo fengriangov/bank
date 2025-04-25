@@ -1,10 +1,11 @@
 -- mysql -u root -p fengri_bank < schema.sql
+USE fengri_bank;
 CREATE TABLE IF NOT EXISTS users (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     first_name VARCHAR(255) NOT NULL,
     last_name VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE,
-    password VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT  NULL,
     admin BOOLEAN NOT NULL DEFAULT FALSE
 );
 
