@@ -1,0 +1,11 @@
+{{#if user.admin}}<a href="/admin">admin panel</a>{{else}}<br>{{/if}}
+<p style="text-align: center;">Welcome, {{user.first_name}}</p>
+{{#each accounts}} 
+        <div class="accountDisplay">
+            <span class="accountTypeDisplay">
+                <p style="display: inline;">{{this.account_type}}</p>
+                <p style="display: inline; color: rgb(186, 186, 186); font-size: 11px;">{{this.account_number}}</p>
+            </span>
+            <span class="accountBalanceDisplay">${{this.balance}}</span>
+        </div>
+{{/each}}

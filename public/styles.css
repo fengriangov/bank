@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+* {
+    font-family: Roboto Mono;
+    background-color: #122117;
+    color: #daede0;
+}
+
+.header {
+    color: #6ade8f;
+}
+
+button > a, button {
+    text-decoration: none;
+    cursor: pointer;
+}

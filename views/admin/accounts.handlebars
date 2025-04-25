@@ -1,0 +1,56 @@
+<script src="/adminAccounts.js"></script>
+<h1 class="header">accounts</h1>
+<button id="createAccountBtn">Create Account</button>
+
+<form action="/admin/accounts" method="GET" style="float: right;">
+  <input type="text" name="search" placeholder="Search accounts..." value="{{searchQuery}}">
+  <button type="submit">Search</button>
+</form><br><br>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Account Number</th>
+            <th>Account Owner <p style="display: inline; color: rgb(186, 186, 186); font-size: 11px;">Their ID</p></th>
+            <th>Account Type</th>
+            <th>Balance</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each data}}
+        <tr>
+            <td>{{this.id}}</td>
+            <td>{{this.account_number}}</td>
+            <td>{{this.user_id}}</td>
+            <td>{{this.account_type}}</td>
+            <td>${{this.balance}}</td>
+            <td>
+                <button class="editAccountBtn" data-id="{{this.id}}" data-user_id="{{this.user_id}}" data-account_type="{{this.account_type}}" data-balance="{{this.balance}}">Edit</button>
+                <button class="deleteAccountBtn" data-id="{{this.id}}">Delete</button>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<div id="popup">
+    <h2 class="header" id="popupTitle"></h2>
+    <form></form>
+        <label for="editAccountOwner">Account Owner:</label>
+        <input name="accountOwner" type="number" id="editAccountOwner" placeholder="1" required><br><br>
+
+        <label for="editAccountType">Account Type:</label>
+        <select name="accountType" id="editAccountType" required>
+            <option value="Personal">Personal</option>
+            <option value="Business">Business</option>
+        </select><br><br>
+
+        <label for="editBalance">Balance:</label>
+        <input name="balance" type="number" id="editBalance" placeholder="100.00"><br><br>
+            
+        <button type="submit">Save</button>
+        <button id="closePopup" type="button">Close</button>
+    </form>
+</div>

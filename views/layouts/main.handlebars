@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fengrian Bank</title>
+    <link rel="stylesheet" type="text/css" href="/main.css">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1 class="header" style="text-align: center;">fengrian bank</h1>
+        <hr>
+        {{#if user}}
+            <button><a href="/user/dashboard">Home</a></button>
+            <button><a href="/user/transfer">Transfer Money</a></button>
+            <button style="float: right;"><a href="/logout">Logout</a></button>
+            <hr>
+        {{/if}}
+    </header>
+    <main>{{{body}}}</main>
+    <footer style="text-align: center;"><hr>&copy; 2025 Bank of Fengri</footer>
+</body>
+</html>

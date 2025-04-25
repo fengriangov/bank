@@ -1,0 +1,58 @@
+<script src="/adminUsers.js"></script>
+<h1 class="header">users</h1>
+<button id="createUserBtn">Create User</button>
+
+<form action="/admin/users" method="GET" style="float: right;">
+  <input type="text" name="search" placeholder="Search users..." value="{{searchQuery}}">
+  <button type="submit">Search</button>
+</form><br><br>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email Address</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each data}}
+        <tr>
+            <td>{{this.id}}</td>
+            <td>{{this.first_name}}</td>
+            <td>{{this.last_name}}</td>
+            <td>{{this.email}}</td>
+            <td>
+                <button class="editUserBtn" data-id="{{this.id}}" data-firstName="{{this.first_name}}"
+                    data-lastName="{{this.last_name}}" data-email="{{this.email}}" data-admin="{{this.admin}}">Edit</button>
+                <button class="deleteUserBtn" data-id="{{this.id}}">Delete</button>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<div id="popup">
+    <h2 class="header" id="popupTitle"></h2>
+    <form method="POST">
+        <label for="editFirstName">First Name:</label>
+        <input name="firstName" type="text" id="editFirstName" placeholder="John" required><br><br>
+
+        <label for="editLastName">Last Name:</label>
+        <input name="lastName" type="text" id="editLastName" placeholder="Smith" required><br><br>
+
+        <label for="editEmail">Email:</label>
+        <input name="email" type="email" id="editEmail" placeholder="john.smith@example.com" required><br><br>
+
+        <label for="editPassword">Password:</label>
+        <input name="password" type="password" id="editPassword" required><br><br>
+            
+        <label for="editAdmin">Admin:</label>
+        <input name="admin" type="checkbox" id="editAdmin"><br><br>
+
+        <button type="submit">Save</button>
+        <button id="closePopup" type="button">Close</button>
+    </form>
+</div>

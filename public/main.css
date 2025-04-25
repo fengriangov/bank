@@ -1,0 +1,80 @@
+body {
+    min-height: 98vh;
+    display: flex;
+    flex-direction: column;
+}
+  
+header {
+    min-height: 50px;
+}
+  
+main {
+    flex: 1;
+}
+
+footer {
+    min-height: 50px;
+}
+
+#loginBlock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    justify-items: center;
+
+    border: #daede0 solid 2px;
+    border-radius: 5px;
+    padding: 30px;
+}
+
+#loginBlock > form *, #loginBlock * {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#loginBlock input {
+    border: #daede0 solid 1px;
+    border-radius: 5px;
+}
+
+.accountDisplay {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    background-color: #1b3123;
+    width: 35%;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    padding: 35px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.accountDisplay * {
+    background-color: inherit;
+}
+
+.accountTypeDisplay {
+    text-align: left;
+    justify-self: start;
+}
+
+.accountBalanceDisplay {
+    text-align: right;
+    justify-self: end;
+}
+
+#transferForm {
+    background-color: #1b3123;
+    width: 250px;
+    margin: 0 auto;
+    padding: 35px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#transferForm * {
+    background-color: inherit;
+    margin: 0;
+}

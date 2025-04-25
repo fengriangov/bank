@@ -1,0 +1,88 @@
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+#menu {
+    width: 250px;
+    background-color: #1b3123;
+    padding: 15px;
+}
+
+#content {
+    flex: 1;
+    padding: 15px;
+}
+
+#menu,
+#content {
+    padding-top: 5px;
+    padding: 15px;
+}
+
+#menu h3,
+#content h1,
+#menu p,
+#content h2,
+#content p {
+    margin: 0;
+}
+
+#menu *,
+#content * {
+    background-color: inherit;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #2a4533;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #1b3123 !important;
+}
+
+.backLink {
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1b3123;
+    padding: 20px;
+    border: 1px solid #ccc;
+    z-index: 1000;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#popup input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+#popup input[type="checkbox"] {
+    margin-left: 0 !important; /* Align checkbox to the left */
+}
+
+#popup button {
+    padding: 10px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+}

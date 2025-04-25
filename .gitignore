@@ -1,0 +1,4 @@
+.env
+fengri_bank database password.txt
+add_test_data.sql
+node_modules/*

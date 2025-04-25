@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fengrian Bank Admin Page</title>
+    <link rel="stylesheet" type="text/css" href="/admin.css">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav id="menu">
+            <a onclick="window.location.href = '/user/dashboard'" class="backLink">&lt; back to user panel</a>
+            <h3 class="header">basic administration</h3>
+            <ul>
+                <li><a href="/admin/dashboard">dashboard</a></li>
+            </ul>
+            <h3 class="header">management</h3>
+            <ul>
+                <li><a href="/admin/users">users</a></li>
+                <li><a href="/admin/accounts">accounts</a></li>
+            </ul>
+        </nav>
+        <section id="content">{{{body}}}</section>
+    </div>
+</body>
+</html>
