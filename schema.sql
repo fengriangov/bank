@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS accounts (
     account_number VARCHAR(255) UNIQUE NOT NULL,
     account_type VARCHAR(50) NOT NULL,
     balance DECIMAL(10, 2) DEFAULT 0.00,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS transactions (
@@ -25,8 +25,8 @@ CREATE TABLE IF NOT EXISTS transactions (
     receiving_account_id INT, -- Account receiving
     description VARCHAR(255),
     transaction_date DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (sending_account_id) REFERENCES accounts(id),
-    FOREIGN KEY (receiving_account_id) REFERENCES accounts(id)
+    FOREIGN KEY (sending_account_id) REFERENCES accounts(id) ON DELETE SET NULL,
+    FOREIGN KEY (receiving_account_id) REFERENCES accounts(id) ON DELETE SET NULL
 );
 
 CREATE INDEX idx_user_id ON accounts (user_id);
