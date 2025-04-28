@@ -29,7 +29,7 @@ app.use(session({
 
 // --- Routes ---
 app.get("/", (req, res) => {
-    res.send("HOME PAGE")
+    res.redirect("/user/dashboard")
 })
 
 app.use("/", require("./routes/auth"))
