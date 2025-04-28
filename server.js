@@ -7,8 +7,8 @@ const exphb = require("express-handlebars")
 const session = require('express-session');
 
 // --- App Setup ---
-const port = 3002
-const app = express()
+const port = 3003;
+const app = express();
 
 // --- Templating Engine ---
 const hbs = exphb.create({
