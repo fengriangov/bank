@@ -2,3 +2,4 @@
 .env
 fengri_bank database password.txt
 node_modules/*
+add_test_data.sql
