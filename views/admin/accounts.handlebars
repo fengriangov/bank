@@ -37,18 +37,18 @@
 
 <div id="popup">
     <h2 class="header" id="popupTitle"></h2>
-    <form></form>
+    <form>
         <label for="editAccountOwner">Account Owner:</label>
-        <input name="accountOwner" type="number" id="editAccountOwner" placeholder="1" required><br><br>
+        <input name="accountOwner" type="number" min="1" id="editAccountOwner" placeholder="1" required><br><br>
 
         <label for="editAccountType">Account Type:</label>
-        <select name="accountType" id="editAccountType" required>
+        <select name="accountType" id="editAccountType" value="Personal" required>
             <option value="Personal">Personal</option>
             <option value="Business">Business</option>
         </select><br><br>
 
         <label for="editBalance">Balance:</label>
-        <input name="balance" type="number" id="editBalance" placeholder="100.00"><br><br>
+        <input name="balance" type="number" min="0" id="editBalance" placeholder="100"><br><br>
             
         <button type="submit">Save</button>
         <button id="closePopup" type="button">Close</button>

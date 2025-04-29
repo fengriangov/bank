@@ -7,6 +7,5 @@ ON DUPLICATE KEY UPDATE email = email;
 
 INSERT INTO accounts (user_id, account_number, account_type, balance) VALUES
 ('1', '911137', 'Personal', '100'),
-('1', '714167', 'Business', '1000'),
 ('2', '652762', 'Personal', '0')
 ON DUPLICATE KEY UPDATE account_number = account_number;

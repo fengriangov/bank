@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }).then(response => response.json())
             .then(results => {
                 alert(results.message)
+                document.location.reload()
             })
         })
     })

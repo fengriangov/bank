@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS accounts (
     user_id INT,
     account_number VARCHAR(255) UNIQUE NOT NULL,
     account_type VARCHAR(50) NOT NULL,
-    balance DECIMAL(10, 2) DEFAULT 0.00,
+    balance DECIMAL(10, 0) DEFAULT 0,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 

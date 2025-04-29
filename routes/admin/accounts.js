@@ -41,7 +41,7 @@ router.get("/", auth.admin, async (req, res) => {
 router.post("/", auth.session(true), async (req, res) => {
     const { accountOwner, accountType, balance } = req.body;
 
-    const accountOwnerCheck = await dbQuery("SELECT COUNT(*) AS count FROM user WHERE id = ?", [accountOwner])
+    const accountOwnerCheck = await dbQuery("SELECT COUNT(*) AS count FROM users WHERE id = ?", [accountOwner])
     let exists = accountOwnerCheck[0].count > 0;
     if(!exists){
         return res.status(400).json({ error: "Bad Request", message: "The specified account owner does not exist." })
@@ -57,13 +57,13 @@ router.post("/:id", auth.session(true), async (req, res) => {
     const accountId = req.params.id;
     const { accountOwner, accountType, balance } = req.body;
 
-    const accountOwnerCheck = await dbQuery("SELECT COUNT(*) AS count FROM user WHERE id = ?", [accountOwner])
+    const accountOwnerCheck = await dbQuery("SELECT COUNT(*) AS count FROM users WHERE id = ?", [accountOwner])
     let exists = accountOwnerCheck[0].count > 0;
     if(!exists){
         return res.status(400).json({ error: "Bad Request", message: "The specified account owner does not exist." })
     }
 
-    const editedAccountCheck = await dbQuery("SELECT COUNT(*) AS count FROM accounts WHERE account_id = ?", [accountId])
+    const editedAccountCheck = await dbQuery("SELECT COUNT(*) AS count FROM accounts WHERE id = ?", [accountId])
     exists = editedAccountCheck[0].count > 0;
     if(!exists){
         return res.status(400).json({ error: "Bad Request", message: "The account you attempted to edit does not exist." })
