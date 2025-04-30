@@ -4,7 +4,7 @@ require('dotenv').config();
 // --- Import Core Modules ---
 const express = require("express")
 const exphb = require("express-handlebars")
-const session = require('express-session');
+const session = require("express-session");
 
 // --- App Setup ---
 const port = 3003;
@@ -24,7 +24,13 @@ app.use(express.json());
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: false,
+    cookie: {
+        secure: process.env.NODE_ENV === "production",
+        httpOnly: true,
+        sameSite: 'lax',
+        maxAge: 1000 * 60 * 60 * 24
+    }
 }));
 
 // --- Routes ---

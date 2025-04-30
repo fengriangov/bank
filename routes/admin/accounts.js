@@ -78,8 +78,8 @@ router.post("/:id", auth.session(true), async (req, res) => {
 router.delete("/:id", auth.session(true), async (req, res) => {
     const accountId = req.params.id;
 
-    const editedAccountCheck = await dbQuery("SELECT COUNT(*) AS count FROM accounts WHERE id = ?", [accountId])
-    exists = editedAccountCheck[0].count > 0;
+    const deletedAccountCheck = await dbQuery("SELECT COUNT(*) AS count FROM accounts WHERE id = ?", [accountId])
+    exists = deletedAccountCheck[0].count > 0;
     if(!exists){
         return res.status(400).json({ error: "Bad Request", message: "The account you attempted to delete does not exist." })
     }

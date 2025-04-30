@@ -33,7 +33,7 @@ router.post("/", auth.session(true), async (req, res) => {
 
     db.query("INSERT INTO users (first_name, last_name, email, password, admin) VALUES (?, ?, ?, ?, ?)", [firstName, lastName, email, hashedPassword, correctedAdmin], (err, results) => {
         if(err) throw err;
-        return res.redirect("/admin/users");
+        return res.status(200).json({ success: "OK", message: "Successfully created account." })
     })
 })
 
@@ -44,24 +44,34 @@ router.post("/:id", auth.session(true), async (req, res) => {
 
     let query = "UPDATE users SET first_name = ?, last_name = ?, email = ?, "
     let params = [firstName, lastName, email]
-
     if(password){
         const hashedPassword = await bcrypt.hash(password, 15);
         query += "password = ?, "
         params.push(hashedPassword)
     }
-
     query += "admin = ? WHERE id = ?"
     params.push(correctedAdmin, userId)
 
+    const editedUserCheck = await dbQuery("SELECT COUNT(*) AS count FROM accounts WHERE id = ?", [userId])
+    exists = editedUserCheck[0].count > 0;
+    if(!exists){
+        return res.status(400).json({ error: "Bad Request", message: "The user you attempted to edit does not exist." })
+    }
+
     db.query(query, params, (err, results) => {
         if(err) throw err;
-        return res.redirect("/admin/users");
+        return res.status(200).json({ success: "OK", message: "Successfully updated user." })
     })
 })
 
-router.delete("/:id", auth.session(true), (req, res) => {
+router.delete("/:id", auth.session(true), async (req, res) => {
     const userId = req.params.id;
+
+    const deletedUserCheck = await dbQuery("SELECT COUNT(*) AS count FROM users WHERE id = ?", [userId])
+    exists = deletedUserCheck[0].count > 0;
+    if(!exists){
+        return res.status(400).json({ error: "Bad Request", message: "The user you attempted to delete does not exist." })
+    }
 
     db.query("DELETE FROM users WHERE id = ?", [userId], (err, results) => {
         if(err) throw err;

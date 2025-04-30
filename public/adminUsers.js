@@ -37,13 +37,32 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    form.addEventListener("submit", (event) => {
+        event.preventDefault()
+        const formData = new FormData(form);
+        const data = new URLSearchParams(formData);
+
+        fetch(form.action, {
+            method: "POST",
+            body: data,
+        }).then(response => response.json())
+        .then(result => {
+            alert(result.message)
+            window.location.reload()
+        })
+    })
+
     deleteUserBtns.forEach(button => {
         button.addEventListener("click", function (){
             if(!confirm("Are you sure you want to delete this user?")) return;    
             const id = this.getAttribute('data-id');
             fetch(`/admin/users/${id}`, {
                 method: "DELETE",
-            }).then(response => {window.location.reload()})
+            }).then(response => response.json())
+            .then(results => {
+                alert(results.message)
+                document.location.reload()
+            })
         })
     })
 
