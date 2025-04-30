@@ -20,9 +20,9 @@ CREATE TABLE IF NOT EXISTS accounts (
 
 CREATE TABLE IF NOT EXISTS transactions (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    sending_account_id INT, -- Account sending
+    sending_account_id INT,
     amount DECIMAL(10, 2) NOT NULL,
-    receiving_account_id INT, -- Account receiving
+    receiving_account_id INT,
     description VARCHAR(255),
     transaction_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (sending_account_id) REFERENCES accounts(id) ON DELETE SET NULL,
