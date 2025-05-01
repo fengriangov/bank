@@ -30,8 +30,11 @@ router.post("/transfer", async (req, res) => {
 
     const newReceiverBalance = (parseFloat(receivingAccount.balance) + amount);
     const newSenderBalance = (parseFloat(sendingAccount.balance) - amount);
-    if(newSenderBalance < 0.00){
+    if(newSenderBalance < 0){
         return res.status(400).json({ error: "Bad Request", message: "You cannot afford this transaction." })
+    }
+    if(amount <= 0){
+        return res.status(400).json({ error: "Bad Request", message: "You can't transfer less than $1" })
     }
 
     await dbQuery("UPDATE accounts SET balance = ? WHERE account_number = ?", [newSenderBalance, sendingAccountNum])
