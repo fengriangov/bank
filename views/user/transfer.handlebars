@@ -4,6 +4,7 @@
     <form>
         <label for="selectSendingAccount">From</label><br>
         <select name="sendingAccountNum" id="selectSendingAccount" required>
+            <option selected disabled hidden>Please select an account</option>
             {{#each userAccounts}}
                 <option value="{{this.account_number}}">{{this.account_type}} ({{this.account_number}}) - ${{this.balance}}</option>
             {{/each}}
