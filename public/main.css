@@ -78,3 +78,23 @@ footer {
     background-color: inherit;
     margin: 0;
 }
+
+#transactionsContainer {
+    width: 500px;
+    margin: 0 auto;
+}
+
+#transactionsTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#transactionsTable th td {
+    border: 1px solid #2a4533;
+    padding: 8px;
+    text-align: left;
+}
+
+#transactionsTable > th {
+    background-color: #1b3123 !important;
+}

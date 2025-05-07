@@ -1,15 +1,11 @@
-const authentication = true;
-
 module.exports = {
     admin: (req, res, next) => {
-        if(!authentication) return next();
         if(!req.session.user || req.session.user.admin != 1) {
             return res.redirect("/user/dashboard")
         }
         return next();
     },
     user: (req, res, next) => {
-        if(!authentication) return next();
         if(!req.session.user){
             return res.redirect("/login")
         }
@@ -17,7 +13,6 @@ module.exports = {
     },
     session: (isAdminRoute = false) => {
         return (req, res, next) => {
-            if(!authentication) return next();
             if(!req.session.user){
                 return res.status(401).json({ error: "Unauthorised", message: "You are not logged in." })
             }
