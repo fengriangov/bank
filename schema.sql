@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS transactions (
     amount DECIMAL(10, 2) NOT NULL,
     receiving_account_id INT,
     description VARCHAR(255),
-    date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    transaction_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (sending_account_id) REFERENCES accounts(id) ON DELETE SET NULL,
     FOREIGN KEY (receiving_account_id) REFERENCES accounts(id) ON DELETE SET NULL
 );

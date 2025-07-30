@@ -12,11 +12,7 @@ const app = express();
 
 // --- Templating Engine ---
 const hbs = exphb.create({
-    defaultLayout: "main",
-    helpers: {
-        eq: (a, b) => a === b,
-        neq: (a, b) => a !== b
-    }
+    defaultLayout: "main"
 })
 app.engine("handlebars", hbs.engine)
 app.set("view engine", "handlebars")
@@ -45,7 +41,6 @@ app.get("/", (req, res) => {
 app.use("/", require("./routes/auth"))
 app.use("/user", require("./routes/user/main"))
 app.use("/user", require("./routes/user/transfer"))
-app.use("/user", require("./routes/user/transactions"))
 app.use("/admin", require("./routes/admin/main"))
 app.use("/admin/users", require("./routes/admin/users"))
 app.use("/admin/accounts", require("./routes/admin/accounts"))
