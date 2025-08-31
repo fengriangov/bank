@@ -22,7 +22,7 @@ router.get("/", auth.admin, async (req, res) => {
     return res.render("admin/users", {
         layout: "admin",
         data: results,
-        searchQuery: searchQuery``
+        searchQuery: searchQuery
     })
 })
 
